@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+/* 추가 */
+.title {
+  font-style: italic;
+}

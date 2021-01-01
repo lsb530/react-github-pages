@@ -1,0 +1,24 @@
+// 기존의 자바스크립트는 비동기 작업을 위해 지연 작업이 필요한 함수에 setTimeout() 함수를 이용했다.
+function work1(onDone) {
+    setTimeout(() => onDone('작업1 완료!'), 100);
+}
+function work2(onDone) {
+    setTimeout(() => onDone('작업2 완료!'), 200);
+}
+function work3(onDone) {
+    setTimeout(() => onDone('작업3 완료!'), 300);
+}
+function urgentWork() {
+    console.log('긴급 작업');
+}
+// 실제 비동기 함수를 사용하는 예 => 계단형태의 콜백 지옥(callback hell) 함수가 된다
+work1(function (msg1) {
+    console.log('done after 100ms:' + msg1);
+    work2(function (msg2) {
+        console.log('done after 200ms:' + msg2);
+        work3(function (msg3) {
+            console.log('done after 300ms:' + msg3);
+        });
+    });
+});
+urgentWork();
